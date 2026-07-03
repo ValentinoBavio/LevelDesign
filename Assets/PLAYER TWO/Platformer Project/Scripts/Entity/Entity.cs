@@ -1,4 +1,4 @@
-using UnityEngine;
+rusing UnityEngine;
 using UnityEngine.Splines;
 
 namespace PLAYERTWO.PlatformerProject
