@@ -3,11 +3,9 @@ using UnityEngine;
 
 public class NPCDialogue : MonoBehaviour
 {
-    [TextArea]
-    public string dialogue;
+    
 
-    [SerializeField] private GameObject bubble;
-    [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] private GameObject bubble;    
 
     private void Start()
     {
@@ -17,8 +15,7 @@ public class NPCDialogue : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
-            dialogueText.text = dialogue;
+        {            
             bubble.SetActive(true);
         }
     }
