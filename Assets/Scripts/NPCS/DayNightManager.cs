@@ -136,4 +136,9 @@ public class DayNightManager : MonoBehaviour
         tc.a = alpha;
         transitionText.color = tc;
     }
+    public bool IsNight()
+    {
+        return !isDay;
+    }
+
 }
