@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class NPCDialogue : MonoBehaviour
 {
-    
+    [SerializeField] private GameObject bubble;
 
-    [SerializeField] private GameObject bubble;    
+    public int missionStep = -1;
 
     private void Start()
     {
@@ -17,6 +17,9 @@ public class NPCDialogue : MonoBehaviour
         if (other.CompareTag("Player"))
         {            
             bubble.SetActive(true);
+
+            if (missionStep != -1)
+                StepManager.Instance.CompleteStep(missionStep);
         }
     }
 

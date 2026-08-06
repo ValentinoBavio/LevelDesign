@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Leer input
+        
         Vector2 input = Vector2.zero;
 
         if (Keyboard.current.wKey.isPressed)
@@ -35,11 +35,9 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.dKey.isPressed)
             input.x += 1;
 
-        // Movimiento
         Vector3 movement = transform.right * input.x + transform.forward * input.y;
         controller.Move(movement.normalized * speed * Time.deltaTime);
 
-        // Gravedad
         if (controller.isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
