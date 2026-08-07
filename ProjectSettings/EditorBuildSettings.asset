@@ -6,18 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Final_Lights.unity
+    guid: 07cca0f7b5cc8c449922ee64ed3210ab
+  - enabled: 0
     path: Assets/Scenes/LastTower.unity
     guid: 5cfc35a9aad8b1a49b966121ad5686b1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
     path: Assets/PLAYER TWO/Platformer Project/Examples/Scenes/TitleScreen.unity
     guid: 1cf5eb096d96e6c45b07b597b5bdde05
-  - enabled: 1
+  - enabled: 0
     path: Assets/PLAYER TWO/Platformer Project/Examples/Scenes/FileSelect.unity
     guid: 784a971f04705024890fd845c19c2832
-  - enabled: 1
+  - enabled: 0
     path: Assets/PLAYER TWO/Platformer Project/Examples/Scenes/LevelSelect.unity
     guid: 1334fc2701a18a04287675bd4ebab3ac
   - enabled: 0
@@ -27,4 +30,3 @@ EditorBuildSettings:
     path: Assets/PLAYER TWO/Platformer Project/Examples/Scenes/TestLevelScene 2.unity
     guid: c7fa87c38f465d249b0f3b291e5de4d4
   m_configObjects: {}
-  m_UseUCBPForAssetBundles: 0
