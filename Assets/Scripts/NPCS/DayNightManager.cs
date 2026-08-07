@@ -14,7 +14,7 @@ public class DayNightManager : MonoBehaviour
     public Material daySkybox;
     public Material nightSkybox;
 
-    [Header("NPCs")]
+    [Header("NPC")]
     public GameObject[] dayNPCs;
     public GameObject[] nightNPCs;
 
@@ -27,6 +27,8 @@ public class DayNightManager : MonoBehaviour
 
     [Header("Cycle")]
     public float minutesPerCycle = 5f;
+    public Image timerCircle;
+    private float timeRemaining;
 
     private bool isDay = true;
 
@@ -40,7 +42,22 @@ public class DayNightManager : MonoBehaviour
         SetDay();
         SetAlpha(0);
 
+        timeRemaining = minutesPerCycle * 60f;
+
         StartCoroutine(TimeCycle());
+    }
+
+    private void Update()
+    {
+        timeRemaining -= Time.deltaTime;
+
+        if (timeRemaining < 0f)
+            timeRemaining = 0f;
+
+        if (timerCircle != null)
+        {
+            timerCircle.fillAmount = timeRemaining / (minutesPerCycle * 60f);
+        }
     }
 
     IEnumerator TimeCycle()
@@ -67,6 +84,9 @@ public class DayNightManager : MonoBehaviour
         yield return new WaitForSeconds(blackScreenTime);
 
         yield return Fade(0);
+
+        timeRemaining = minutesPerCycle * 60f;
+
     }
 
     void SetDay()

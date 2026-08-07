@@ -5,10 +5,12 @@ public class Brujula : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
     [SerializeField] private RectTransform arrow;
+    [SerializeField] private GameObject timerCircle;
 
     private void Start()
     {
         arrow.gameObject.SetActive(false);
+        timerCircle.SetActive(false);
     }
 
     private void Update()
@@ -16,6 +18,7 @@ public class Brujula : MonoBehaviour
         if (!Keyboard.current.qKey.isPressed)
         {
             arrow.gameObject.SetActive(false);
+            timerCircle.SetActive(false);
             return;
         }
 
@@ -24,10 +27,13 @@ public class Brujula : MonoBehaviour
         if (target == null)
         {
             arrow.gameObject.SetActive(false);
+            timerCircle.SetActive(true);
+
             return;
         }
 
         arrow.gameObject.SetActive(true);
+        timerCircle.SetActive(true);
 
         Vector3 dir = target.position - playerCamera.transform.position;
 

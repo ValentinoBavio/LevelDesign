@@ -3,8 +3,9 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
-{   
+{
     public float speed = 5f;
+    public float sprintSpeed = 8f;
 
     private float gravity = -9.81f;
     private CharacterController controller;
@@ -25,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        
         Vector2 input = Vector2.zero;
 
         if (Keyboard.current.wKey.isPressed)
@@ -40,18 +40,29 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.dKey.isPressed)
             input.x += 1;
 
-        Vector3 movement = transform.right * input.x + transform.forward * input.y;
-        controller.Move(movement.normalized * speed * Time.deltaTime);
 
+        float currentSpeed = speed;
+
+
+        if (Keyboard.current.leftShiftKey.isPressed && TownArea.Instance.isOutsideTown)
+        {
+            currentSpeed = sprintSpeed;
+        }
+
+        Vector3 movement = transform.right * input.x + transform.forward * input.y;
+
+        controller.Move(movement.normalized * currentSpeed * Time.deltaTime);
+
+        
         if (controller.isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
 
         velocity.y += gravity * Time.deltaTime;
+
         controller.Move(velocity * Time.deltaTime);
 
-        
         if (Mouse.current.rightButton.isPressed)
         {
             playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView,zoomFOV,zoomSpeed * Time.deltaTime);
